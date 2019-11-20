@@ -18,6 +18,7 @@ public class Group {
 
     /**
      * Возращает имя группы
+     * 
      * @return nameGroup
      */
     public String getNameGroup() {
@@ -26,6 +27,7 @@ public class Group {
 
     /**
      * Возращает список студентов
+     * 
      * @return Arraylist<Student> students
      */
     public ArrayList<Student> getAllStudents() {
@@ -51,5 +53,33 @@ public class Group {
     public void removeStudent(Student student) {
         this.students.remove(student);
     }
-    
+
+    /**
+     * Возращает одного из студентов с наилучшим значением рейтинга из группы
+     * 
+     * @return Student
+     */
+    public Student bestStudent() {
+        Student best = students.get(0);
+        for (Student s : students) {
+            if (s.getRating() >= best.getRating())
+                best = s;
+        }
+        return best;
+    }
+
+    /**
+     * Возращает одного из студентов с наименьшим значением рейтинга из группы
+     * 
+     * @return
+     */
+    public Student worstStudent() {
+        Student worst = students.get(0);
+        for (Student s : students) {
+            if (s.getRating() < worst.getRating())
+                worst = s;
+        }
+        return worst;
+    }
+
 }

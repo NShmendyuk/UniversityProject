@@ -2,12 +2,13 @@ package ru.nikolay.school;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 /**
  * @author nikolay
  */
 public class Main {
     public static void main(String[] args) {
-        
+
         Scanner sc = new Scanner(System.in);
         int inputInt;
         Boolean flag = true;
@@ -15,17 +16,10 @@ public class Main {
         ArrayList<Group> allGroups = new ArrayList<Group>();
         try {
             while (flag) {
-                System.out.println(
-                        "Choose option:\n" 
-                        + "1.Create student\n" 
-                        + "2.Create group\n" 
-                        + "3.Move student to group\n"
-                        + "4.Print all students\n" 
-                        +"5.Print all groups\n" 
-                        + "6.Remove student from group\n"
-                        + "7.Change student's surname\n" 
-                        + "8.Change student's age\n" 
-                        + "0.Exit");
+                System.out.println("Choose option:\n" + "1.Create student\n" + "2.Create group\n"
+                        + "3.Move student to group\n" + "4.Print all students\n" + "5.Print all groups\n"
+                        + "6.Remove student from group\n" + "7.Change student's surname\n" + "8.Change student's age\n"
+                        + "9.Set a rating to student\n" + "10.Show a student with high or low rating\n" + "0.Exit");
                 inputInt = sc.nextInt();
                 switch (inputInt) {
                 case 1: {
@@ -140,6 +134,39 @@ public class Main {
                     allStudents.get(studentNumber).setAge(newAge);
                     break;
                 }
+                case 9: {
+                    System.out.println("Choose group");
+                    for (int i = 0; i < allGroups.size(); i++) {
+                        System.out.println(i + " " + allGroups.get(i).getNameGroup());
+                    }
+                    int chosingGroup = sc.nextInt();
+                    System.out.println("Choose student");
+                    for (int i = 0; i < allGroups.get(chosingGroup).getAllStudents().size(); i++) {
+                        System.out.println(allGroups.get(chosingGroup).getAllStudents().get(i).getName()
+                                + allGroups.get(chosingGroup).getAllStudents().get(i).getSurname());
+                        int chosingStudent = sc.nextInt();
+                        System.out.println("Type a new value of rating");
+                        int rating = sc.nextInt();
+                        allGroups.get(chosingGroup).getAllStudents().get(chosingStudent).setRating(rating);
+                    }
+                    break;
+                }
+                case 10: {
+                    System.out.println("Choose group");
+                    for (int i = 0; i < allGroups.size(); i++) {
+                        System.out.println(i + " " + allGroups.get(i).getNameGroup());
+                    }
+                    int chosingGroup = sc.nextInt();
+                    System.out.println("1.The best student\n2.The worst student ");
+                    int chosing = sc.nextInt();
+                    if (chosing == 1)
+                        System.out.println(allGroups.get(chosingGroup).bestStudent().getName());
+                    else if (chosing == 2)
+                        System.out.println(allGroups.get(chosingGroup).worstStudent().getName());
+                    else
+                        System.out.println("Wrong number!!!");
+                    break;
+                }
                 case 0: {
                     flag = false;
                     break;
@@ -149,7 +176,7 @@ public class Main {
                     break;
                 }
                 }
-            } 
+            }
         } finally {
             sc.close();
         }
