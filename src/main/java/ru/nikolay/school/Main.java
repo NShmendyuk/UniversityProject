@@ -25,8 +25,6 @@ public class Main {
                         + "6.Remove student from group\n"
                         + "7.Change student's surname\n" 
                         + "8.Change student's age\n" 
-                        + "9.Set a rating to student\n" 
-                        + "10.Show a student with high or low rating\n"
                         + "0.Exit");
                 inputInt = sc.nextInt();
                 switch (inputInt) {
@@ -140,40 +138,6 @@ public class Main {
                     System.out.println("Write new age for " + allStudents.get(studentNumber).getSurname());
                     Integer newAge = sc.nextInt();
                     allStudents.get(studentNumber).setAge(newAge);
-                    break;
-                }
-                case 9:{
-                    System.out.println("Choose group");
-                    for (int i = 0; i < allGroups.size(); i++){
-                        System.out.println(i + " "
-                                + allGroups.get(i).getNameGroup());
-                    }
-                    int chosingGroup = sc.nextInt();
-                    System.out.println("Choose student");
-                    for (int i = 0; i < allGroups.get(chosingGroup).getAllStudents().size(); i++){
-                        System.out.println(allGroups.get(chosingGroup).getAllStudents().get(i).getName() 
-                        + allGroups.get(chosingGroup).getAllStudents().get(i).getSurname());
-                    int chosingStudent = sc.nextInt();
-                    System.out.println("Type a new value of rating");
-                    int rating = sc.nextInt();
-                    allGroups.get(chosingGroup).getAllStudents().get(chosingStudent).setRating(rating);
-                    }
-                    break;
-                }
-                case 10:{
-                    System.out.println("Choose group");
-                    for (int i = 0; i < allGroups.size(); i++){
-                        System.out.println(i + " "
-                                + allGroups.get(i).getNameGroup());
-                    }
-                    int chosingGroup = sc.nextInt();
-                    System.out.println("1.The one of best student\n2.The one of worst student ");
-                    int number = sc.nextInt();
-                    if (number == 1)
-                        System.out.println(allGroups.get(chosingGroup).bestStudent().getName());
-                    else if (number == 2)
-                        System.out.println(allGroups.get(chosingGroup).worstStudent().getName());
-                    else System.out.println("Wrong number!!!");
                     break;
                 }
                 case 0: {

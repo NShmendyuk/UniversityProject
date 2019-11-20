@@ -35,18 +35,5 @@ public class Student extends Person {
         this.nameGroup = nameGroup;
     }
 
-    /**
-     * Установить значение рейтинга студента
-     * @param rating
-     */
-    public void setRating(int rating) {
-        this.rating = rating;
-        if (rating < 0)
-            throw new IllegalArgumentException();
-    }
-
-    public Integer getRating() {
-        return this.rating;
-    }
 
 }
