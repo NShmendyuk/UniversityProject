@@ -21,9 +21,9 @@ public class Main {
                         + "3.Move student to group\n" + "4.Print all students\n" + "5.Print all groups\n"
                         + "6.Remove student from group\n" + "7.Change student's surname\n" + "8.Change student's age\n"
                         + "9.Set a rating to student\n" + "10.Show a student with high or low rating\n"
-                        + "11.Control subjects" 
-                        + "12.Control exchange student" 
-                        + "13.Attendance"
+                        + "11.Control subjects\n" 
+                        + "12.Control exchange student\n" 
+                        + "13.Attendance\n"
                         + "14.Control classroom teacher\n" 
                         + "0.Exit");
                 inputInt = sc.nextInt();
@@ -227,6 +227,8 @@ public class Main {
                 }
                 case 14:{
                     System.out.println("Choose group");
+                    if (allGroups.size() == 0) 
+                        System.out.println("Groups not exist");
                     for (int i = 0; i < allGroups.size(); i++) {
                         System.out.println(i + " " + allGroups.get(i).getNameGroup());
                     }
@@ -238,7 +240,7 @@ public class Main {
                     inputInt = sc.nextInt();
                     if (inputInt == 1){
                         System.out.println("Write teacher's name");
-                        String teacherName = sc.nextLine();
+                        String teacherName = sc.next();
                         Integer checkGroup = 0;
                         for (int i = 0; i < allGroups.size(); i++) {
                             if (allGroups.get(i).getTeacher().getName().equals(teacherName)){

@@ -13,7 +13,7 @@ public class Group {
     Group(String nameGroup) {
         this.students = new ArrayList<Student>();
         this.nameGroup = nameGroup;
-        teacher = null;
+        teacher = new ClassroomTeacher("default", "default", "default", 0, 0);
     }
 
     /**
