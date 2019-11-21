@@ -2,6 +2,7 @@ package ru.nikolay.school;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import ru.nikolay.school.exchangelayer.StudentExchangeControl;
 
 /**
  * @author nikolay
@@ -16,11 +17,14 @@ public class Main {
         ArrayList<Group> allGroups = new ArrayList<Group>();
         try {
             while (flag) {
-                System.out.println("Choose option:\n" + "1.Create student\n" + "2.Create group\n"
+                System.out.println("Choose option:\n" + "1.Add student\n" + "2.Add group\n"
                         + "3.Move student to group\n" + "4.Print all students\n" + "5.Print all groups\n"
                         + "6.Remove student from group\n" + "7.Change student's surname\n" + "8.Change student's age\n"
                         + "9.Set a rating to student\n" + "10.Show a student with high or low rating\n"
-                        + "11.Control subjects" + "0.Exit");
+                        + "11.Control subjects" 
+                        + "12.Control exchange student" 
+                        + "13.Attendance" 
+                        + "0.Exit");
                 inputInt = sc.nextInt();
                 switch (inputInt) {
                 case 1: {
@@ -176,25 +180,49 @@ public class Main {
                     Integer studentNumber = sc.nextInt();
                     System.out.println("Type subject name");
                     String inputStr = sc.next();
-                    if (allStudents.get(studentNumber).getSubject(inputStr).getName() == inputStr){
-                        System.out.println("Subject " + allStudents.get(studentNumber).getSubject(inputStr) + " chosed");
-                        System.out.println("1.Add mark\n"
-                        + "2.get mark");
+                    if (allStudents.get(studentNumber).getSubject(inputStr).getName() == inputStr) {
+                        System.out
+                                .println("Subject " + allStudents.get(studentNumber).getSubject(inputStr) + " chosed");
+                        System.out.println("1.Add mark\n" + "2.get mark");
                         inputInt = sc.nextInt();
-                        if (inputInt == 1){
+                        if (inputInt == 1) {
                             System.out.println("Type mark");
                             inputInt = sc.nextInt();
                             allStudents.get(studentNumber).getSubject(inputStr).addMark(inputInt);
-                        }
-                        else {
+                        } else {
                             System.out.println(allStudents.get(studentNumber).getSubject(inputStr).getMarks());
                         }
-                    }
-                    else{
+                    } else {
                         allStudents.get(studentNumber).addSubject(inputStr);
                         System.out.println("Subject added");
                     }
                     break;
+                }
+                case 12: {
+                    StudentExchangeControl exControl = new StudentExchangeControl();
+                    exControl.show();
+                    break;
+                }
+                case 13: {
+                    System.out.println("Choose student");
+                    for (int i = 0; i < allStudents.size(); i++) {
+                        System.out.println(i + " " + allStudents.get(i).getName());
+                    }
+                    Integer studentNumber = sc.nextInt();
+                    allStudents.get(studentNumber).printAllSubjects();
+                    System.out.println("Type subject");
+                    String subjectName = sc.next();
+                    System.out.println("1.Add attendance +1\n"
+                    + "2.Show attendance");
+                    inputInt = sc.nextInt();
+                    if (inputInt == 1){
+                        allStudents.get(studentNumber).addAttendance(subjectName);
+                    }
+                    else if (inputInt == 2){
+                        System.out.println(allStudents.get(studentNumber).getAttendance(subjectName)); 
+                    }
+                    else System.out.println("Incorret number");
+
                 }
                 case 0: {
                     flag = false;

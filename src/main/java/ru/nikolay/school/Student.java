@@ -17,7 +17,7 @@ public class Student extends Person {
      * @param sex
      * @param age
      */
-    Student(String name, String surname, String sex, Integer age) {
+    public Student(String name, String surname, String sex, Integer age) {
         super(name, surname, sex, age);
         this.nameGroup = "none";
     }
@@ -70,6 +70,12 @@ public class Student extends Person {
         return sub;
     }
 
+    public void printAllSubjects(){
+        for (Subject sub: subjects){
+            System.out.println(sub.getName() + " ");
+        }
+    }
+
     /**
      * Добавление Предмета для учащегося
      * @param subjectName
@@ -77,5 +83,32 @@ public class Student extends Person {
     public void addSubject(String subjectName){
         Subject subject = new Subject(subjectName);
         this.subjects.add(subject);
+    }
+
+    /**
+     * Отметить посещение
+     * @param subjectName
+     */
+    public void addAttendance(String subjectName){
+        for (Subject sub: subjects){
+            if (sub.getName().equals(subjectName)){
+                sub.addAttendance();
+            }
+        }
+    }
+
+    /**
+     * Возвращает количество посещений предмета
+     * @param subjectName
+     * @return
+     */
+    public Integer getAttendance(String subjectName){
+        Integer attendance = -1;
+        for (Subject sub: subjects){
+            if (sub.getName().equals(subjectName)){
+                attendance = sub.getAttendance();
+            }
+        }
+        return attendance;
     }
 }
