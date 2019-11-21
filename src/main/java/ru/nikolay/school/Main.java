@@ -19,7 +19,8 @@ public class Main {
                 System.out.println("Choose option:\n" + "1.Create student\n" + "2.Create group\n"
                         + "3.Move student to group\n" + "4.Print all students\n" + "5.Print all groups\n"
                         + "6.Remove student from group\n" + "7.Change student's surname\n" + "8.Change student's age\n"
-                        + "9.Set a rating to student\n" + "10.Show a student with high or low rating\n" + "0.Exit");
+                        + "9.Set a rating to student\n" + "10.Show a student with high or low rating\n"
+                        + "11.Control subjects" + "0.Exit");
                 inputInt = sc.nextInt();
                 switch (inputInt) {
                 case 1: {
@@ -120,8 +121,8 @@ public class Main {
                         break;
                     }
                     int studentNumber;
+                    System.out.println("Choose student");
                     for (int i = 0; i < allStudents.size(); i++) {
-                        System.out.println("Choose student");
                         System.out.println(i + " " + allStudents.get(i).getSurname());
                     }
                     studentNumber = sc.nextInt();
@@ -165,6 +166,34 @@ public class Main {
                         System.out.println(allGroups.get(chosingGroup).worstStudent().getName());
                     else
                         System.out.println("Wrong number!!!");
+                    break;
+                }
+                case 11: {
+                    System.out.println("Choose student");
+                    for (int i = 0; i < allStudents.size(); i++) {
+                        System.out.println(i + " " + allStudents.get(i).getName());
+                    }
+                    Integer studentNumber = sc.nextInt();
+                    System.out.println("Type subject name");
+                    String inputStr = sc.next();
+                    if (allStudents.get(studentNumber).getSubject(inputStr).getName() == inputStr){
+                        System.out.println("Subject " + allStudents.get(studentNumber).getSubject(inputStr) + " chosed");
+                        System.out.println("1.Add mark\n"
+                        + "2.get mark");
+                        inputInt = sc.nextInt();
+                        if (inputInt == 1){
+                            System.out.println("Type mark");
+                            inputInt = sc.nextInt();
+                            allStudents.get(studentNumber).getSubject(inputStr).addMark(inputInt);
+                        }
+                        else {
+                            System.out.println(allStudents.get(studentNumber).getSubject(inputStr).getMarks());
+                        }
+                    }
+                    else{
+                        allStudents.get(studentNumber).addSubject(inputStr);
+                        System.out.println("Subject added");
+                    }
                     break;
                 }
                 case 0: {

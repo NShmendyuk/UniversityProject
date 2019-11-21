@@ -1,8 +1,12 @@
 package ru.nikolay.school;
 
+import java.util.ArrayList;
+
+import ru.nikolay.school.subjectlayer.Subject;
 public class Student extends Person {
     private String nameGroup;
     private Integer rating;
+    private ArrayList<Subject> subjects;
 
     /**
      * Конструктор с определенными значениями (Имя, фамилия, пол, возраст)
@@ -50,5 +54,19 @@ public class Student extends Person {
 
     public Integer getRating() {
         return this.rating;
+    }
+
+    public Subject getSubject(String subjectName){
+        Subject sub = null;
+        for (int i = 0; i <= subjects.size(); i++){
+            if (subjects.get(i).getName().equals(subjectName)) 
+            sub = subjects.get(i);
+        }
+        return sub;
+    }
+
+    public void addSubject(String subjectName){
+        Subject subject = new Subject(subjectName);
+        this.subjects.add(subject);
     }
 }
