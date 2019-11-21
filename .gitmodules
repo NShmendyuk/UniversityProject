@@ -1,0 +1,6 @@
+[submodule "subModule"]
+	path = subModule
+	url = https://github.com/baby-benz/FunnelGame
+[submodule "standart/standart"]
+	path = standart/standart
+	url = https://github.com/standard/standard
