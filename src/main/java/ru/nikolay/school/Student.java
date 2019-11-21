@@ -85,6 +85,10 @@ public class Student extends Person {
         this.subjects.add(subject);
     }
 
+    /**
+     * Отметить посещение
+     * @param subjectName
+     */
     public void addAttendance(String subjectName){
         for (Subject sub: subjects){
             if (sub.getName().equals(subjectName)){
@@ -93,6 +97,11 @@ public class Student extends Person {
         }
     }
 
+    /**
+     * Возвращает количество посещений предмета
+     * @param subjectName
+     * @return
+     */
     public Integer getAttendance(String subjectName){
         Integer attendance = -1;
         for (Subject sub: subjects){
