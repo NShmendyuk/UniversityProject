@@ -17,7 +17,7 @@ public class Student extends Person {
      * @param sex
      * @param age
      */
-    Student(String name, String surname, String sex, Integer age) {
+    public Student(String name, String surname, String sex, Integer age) {
         super(name, surname, sex, age);
         this.nameGroup = "none";
     }
