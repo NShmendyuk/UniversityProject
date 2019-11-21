@@ -23,7 +23,8 @@ public class Main {
                         + "9.Set a rating to student\n" + "10.Show a student with high or low rating\n"
                         + "11.Control subjects" 
                         + "12.Control exchange student" 
-                        + "13.Attendance" 
+                        + "13.Attendance"
+                        + "14.Control classroom teacher\n" 
                         + "0.Exit");
                 inputInt = sc.nextInt();
                 switch (inputInt) {
@@ -223,6 +224,63 @@ public class Main {
                     }
                     else System.out.println("Incorret number");
 
+                }
+                case 14:{
+                    System.out.println("Choose group");
+                    for (int i = 0; i < allGroups.size(); i++) {
+                        System.out.println(i + " " + allGroups.get(i).getNameGroup());
+                    }
+                    int chosingGroup = sc.nextInt();
+                    System.out.println("1.Set teacher\n"
+                    + "2.Show teacher\n"
+                    + "3.Set teacher salary\n"
+                    + "4.Show teacher's salary");
+                    inputInt = sc.nextInt();
+                    if (inputInt == 1){
+                        System.out.println("Write teacher's name");
+                        String teacherName = sc.nextLine();
+                        Integer checkGroup = 0;
+                        for (int i = 0; i < allGroups.size(); i++) {
+                            if (allGroups.get(i).getTeacher().getName().equals(teacherName)){
+                                checkGroup = 1;
+                                break;
+                            }
+                        }
+                        if (checkGroup == 1){
+                            System.out.println("Teacher have a classroom already");
+                        }
+                        else{
+                            System.out.println("Write name, surname, sex, age, salary of teacher");
+                            String name = sc.next();
+                            String surname = sc.next();
+                            String sex = sc.next();
+                            Integer age = sc.nextInt();
+                            Integer salary = sc.nextInt();
+                            ClassroomTeacher teacher = new ClassroomTeacher(name, surname, sex, age, salary);
+                            System.out.println("Write group's name");
+                            String groupName = sc.next();
+                            for (Group gr: allGroups){
+                                if (gr.getNameGroup().equals(groupName)){
+                                    gr.setClassroomTeacher(teacher);
+                                    System.out.println("Teacher added");
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    else if (inputInt == 2){
+                        System.out.println(allGroups.get(chosingGroup).getTeacher().getName());
+                    }
+                    else if (inputInt == 3){
+                        System.out.println("write salary");
+                        inputInt = sc.nextInt();
+                        allGroups.get(chosingGroup).getTeacher().setSalary(inputInt);
+                    }
+                    else if (inputInt == 4){
+                        System.out.println(allGroups.get(chosingGroup).getTeacher().getSalary());
+                    }
+                    else System.out.println("Incorrect number");
+                    break;
                 }
                 case 0: {
                     flag = false;
