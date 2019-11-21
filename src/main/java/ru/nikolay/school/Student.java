@@ -56,6 +56,11 @@ public class Student extends Person {
         return this.rating;
     }
 
+    /**
+     * Возвращает предмет по названию
+     * @param subjectName
+     * @return
+     */
     public Subject getSubject(String subjectName){
         Subject sub = null;
         for (int i = 0; i <= subjects.size(); i++){
@@ -65,6 +70,10 @@ public class Student extends Person {
         return sub;
     }
 
+    /**
+     * Добавление Предмета для учащегося
+     * @param subjectName
+     */
     public void addSubject(String subjectName){
         Subject subject = new Subject(subjectName);
         this.subjects.add(subject);
