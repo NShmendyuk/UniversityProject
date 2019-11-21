@@ -1,7 +1,6 @@
 package ru.nikolay.school;
 
 import java.util.ArrayList;
-
 public class Group {
     private String nameGroup;
     private ArrayList<Student> students;
