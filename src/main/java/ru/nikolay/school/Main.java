@@ -2,7 +2,7 @@ package ru.nikolay.school;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import ru.nikolay.school.exchangelayer.StudentExchangeControl;
 /**
  * @author nikolay
  */
@@ -16,11 +16,13 @@ public class Main {
         ArrayList<Group> allGroups = new ArrayList<Group>();
         try {
             while (flag) {
-                System.out.println("Choose option:\n" + "1.Create student\n" + "2.Create group\n"
+                System.out.println("Choose option:\n" + "1.Add student\n" + "2.Add group\n"
                         + "3.Move student to group\n" + "4.Print all students\n" + "5.Print all groups\n"
                         + "6.Remove student from group\n" + "7.Change student's surname\n" + "8.Change student's age\n"
                         + "9.Set a rating to student\n" + "10.Show a student with high or low rating\n"
-                        + "11.Control subjects" + "0.Exit");
+                        + "11.Control subjects" 
+                        + "12.Control exchange student"
+                        + "0.Exit");
                 inputInt = sc.nextInt();
                 switch (inputInt) {
                 case 1: {
@@ -194,6 +196,11 @@ public class Main {
                         allStudents.get(studentNumber).addSubject(inputStr);
                         System.out.println("Subject added");
                     }
+                    break;
+                }
+                case 12:{
+                    StudentExchangeControl exControl = new StudentExchangeControl();
+                    exControl.show();
                     break;
                 }
                 case 0: {
