@@ -21,6 +21,7 @@ public class StudentExchangeControl {
             Integer age = sc.nextInt();
             String mainSchool = sc.nextLine();
             studentsExchange.add(new StudentExchange(name,surname,sex,age,mainSchool));
+            sc.close();
         }
         else if (nextInt == 2){
             for (StudentExchange s : studentsExchange) {
