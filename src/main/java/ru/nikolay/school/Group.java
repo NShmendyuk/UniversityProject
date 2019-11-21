@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Group {
     private String nameGroup;
     private ArrayList<Student> students;
-
+    private ClassroomTeacher teacher;
     /**
      * Конструктор
      * 
@@ -13,6 +13,7 @@ public class Group {
     Group(String nameGroup) {
         this.students = new ArrayList<Student>();
         this.nameGroup = nameGroup;
+        teacher = null;
     }
 
     /**
@@ -81,4 +82,11 @@ public class Group {
         return worst;
     }
 
+    public void setClassroomTeacher(ClassroomTeacher classroomTeacher){
+        this.teacher = classroomTeacher;
+    }
+
+    public ClassroomTeacher getTeacher(){
+        return this.teacher;
+    }
 }
