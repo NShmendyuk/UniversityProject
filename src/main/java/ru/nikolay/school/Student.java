@@ -70,6 +70,12 @@ public class Student extends Person {
         return sub;
     }
 
+    public void printAllSubjects(){
+        for (Subject sub: subjects){
+            System.out.println(sub.getName() + " ");
+        }
+    }
+
     /**
      * Добавление Предмета для учащегося
      * @param subjectName
@@ -77,5 +83,23 @@ public class Student extends Person {
     public void addSubject(String subjectName){
         Subject subject = new Subject(subjectName);
         this.subjects.add(subject);
+    }
+
+    public void addAttendance(String subjectName){
+        for (Subject sub: subjects){
+            if (sub.getName().equals(subjectName)){
+                sub.addAttendance();
+            }
+        }
+    }
+
+    public Integer getAttendance(String subjectName){
+        Integer attendance = -1;
+        for (Subject sub: subjects){
+            if (sub.getName().equals(subjectName)){
+                attendance = sub.getAttendance();
+            }
+        }
+        return attendance;
     }
 }
